@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\.e40467ba71431f37b1c52ed6de16a17087ff5467-audit.json",
+    "files": [
+        {
+            "date": 1693834064025,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-04.log",
+            "hash": "2f28702a8f7df50cb6342955884b800edfe28d2af872edc3dd808ab4277c2b96"
+        },
+        {
+            "date": 1693925312992,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-05.log",
+            "hash": "7bf790a46f45b7db276d69ae9bb54a128287e90009d282440dad63ffdd00289f"
+        },
+        {
+            "date": 1694005984449,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-06.log",
+            "hash": "aa9acd09eefd6e009e8280d98992d409e185029b961d8dc3d45d80f704e294a9"
+        },
+        {
+            "date": 1694081970985,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-07.log",
+            "hash": "4e09c39508ddd931cfe10bf2e744359f01f5f876bf4496fc22a877d5e28cfe53"
+        },
+        {
+            "date": 1694139380893,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-08.log",
+            "hash": "2fd43ce207ec9781b8a5aaf17d2b136c616779ef116fa41d507e5c95e82ffc0a"
+        },
+        {
+            "date": 1694259270380,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-09.log",
+            "hash": "ad56da6a8b59ee1e44d761cc9d408393f0b00653aca9c7702823679328c45822"
+        },
+        {
+            "date": 1694320662664,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-10.log",
+            "hash": "bb8ae34af51886fbd8f66816734e77c33a6c3ef2e98e136be03c0aba84dd8882"
+        }
+    ],
+    "hashType": "sha256"
+}
