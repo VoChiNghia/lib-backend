@@ -1,0 +1,22 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const router = express_1.default.Router();
+const auth_1 = __importDefault(require("./auth"));
+const user_1 = __importDefault(require("./user"));
+const book_1 = __importDefault(require("./book"));
+const category_1 = __importDefault(require("./category"));
+const borrowBook_1 = __importDefault(require("./borrowBook"));
+const blog_1 = __importDefault(require("./blog"));
+const file_1 = __importDefault(require("./file"));
+router.use('/v1/api', auth_1.default);
+router.use('/v1/api', user_1.default);
+router.use('/v1/api', book_1.default);
+router.use('/v1/api', category_1.default);
+router.use('/v1/api', borrowBook_1.default);
+router.use('/v1/api', blog_1.default);
+router.use('/v1/api', file_1.default);
+exports.default = router;
