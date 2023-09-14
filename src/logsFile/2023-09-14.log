@@ -1,0 +1,6 @@
+{
+  message: 'Not found',
+  level: 'error',
+  label: 'track logs system:',
+  timestamp: '2023-09-14T13:39:47.333Z'
+}

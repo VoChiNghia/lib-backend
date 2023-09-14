@@ -10,7 +10,6 @@ import fs from 'fs'
 
 class BookService {
   static async createNewBook(body: BookModelType) {
-    console.log(body)
     try {
       const foundBook = await bookModel.findOne({ name: body.name })
       if (foundBook) throw new BadRequest('Book code already exist')
@@ -37,6 +36,7 @@ class BookService {
       throw new Error(error)
     }
   }
+
 
   static async updateBook(bookId: string, body: BookModelType) {
     validateObjectId(bookId)
