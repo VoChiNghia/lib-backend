@@ -7,6 +7,7 @@ import category from './category'
 import borrowBook from './borrowBook'
 import blog from './blog'
 import file from './file'
+import penalty from './penalty'
 
 router.use('/v1/api', auth)
 router.use('/v1/api', user)
@@ -15,5 +16,6 @@ router.use('/v1/api', category)
 router.use('/v1/api', borrowBook)
 router.use('/v1/api', blog)
 router.use('/v1/api', file)
+router.use('/v1/api', penalty)
 
 export default router

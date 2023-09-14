@@ -7,7 +7,7 @@ import { Request, Response, NextFunction } from 'express'
 class FileController {
   async createNewBlog(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
-      message: 'create file',
+      message: 'Successfully',
       httpCode: 201,
       metadata: await FileService.createFile(req.body)
     }).send(res)
@@ -15,7 +15,7 @@ class FileController {
 
   async getAllFiles(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
-      message: 'create file',
+      message: 'Successfully',
       httpCode: 201,
       metadata: await FileService.getAllFile()
     }).send(res)
@@ -31,7 +31,7 @@ class FileController {
 
   async deleteFile(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
-      message: 'create file',
+      message: 'Successfully',
       httpCode: 201,
       metadata: await FileService.deleteFile(req.params.id)
     }).send(res)
@@ -39,7 +39,7 @@ class FileController {
 
   async updateFile(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
-      message: 'create file',
+      message: 'Successfully',
       httpCode: 201,
       metadata: await FileService.uploadFilePdf(req)
     }).send(res)
@@ -47,7 +47,7 @@ class FileController {
 
   async updateCoverImage(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
-      message: 'create file',
+      message: 'Successfully',
       httpCode: 201,
       metadata: await FileService.uploadCoverImage(req)
     }).send(res)
