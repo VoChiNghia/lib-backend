@@ -37,6 +37,13 @@ class CategoryController {
       metadata: await BorrowBookService.getBorrowBookByUser(req.user.id)
     }).send(res)
   }
+
+  async getBorrowedBooksByMonth(req: Request, res: Response, next: NextFunction) {
+    new SusscessResponse({
+      message: 'successfully',
+      metadata: await BorrowBookService.getBorrowedBooksByMonth()
+    }).send(res)
+  }
 }
 
 export default new CategoryController()

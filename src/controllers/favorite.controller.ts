@@ -141,7 +141,6 @@ export const deleteItemFromListBooks = async (req: any, res: any) => {
   try {
     // Tìm dữ liệu của người dùng với userId
     const favoriteBook = await favoriteModel.findOne({ user: userId })
-
     if (!favoriteBook) {
       return res.status(404).json({ message: 'Người dùng không tồn tại' })
     }
@@ -149,7 +148,7 @@ export const deleteItemFromListBooks = async (req: any, res: any) => {
     const updatedListBooks = favoriteBook.listBooks.filter(
       (bookId: any) => !bookId.equals(_id)
     )
-
+      console.log(updatedListBooks)
     // Cập nhật listBooks mới
     favoriteBook.listBooks = updatedListBooks
     // Lưu thay đổi vào cơ sở dữ liệu

@@ -1,0 +1,24 @@
+{
+  message: 'Not found',
+  level: 'error',
+  label: 'track logs system:',
+  timestamp: '2023-09-16T14:42:31.101Z'
+}
+{
+  message: 'Not found',
+  level: 'error',
+  label: 'track logs system:',
+  timestamp: '2023-09-16T14:46:35.400Z'
+}
+{
+  message: 'Not found',
+  level: 'error',
+  label: 'track logs system:',
+  timestamp: '2023-09-16T14:50:49.005Z'
+}
+{
+  message: 'Not found',
+  level: 'error',
+  label: 'track logs system:',
+  timestamp: '2023-09-16T14:51:15.806Z'
+}
