@@ -9,6 +9,7 @@ const router = express.Router()
 router.post('/blog', asyncHandler(blogController.createNewBlog))
 router.get('/blog', asyncHandler(blogController.getAllBlog))
 router.get('/blog/:id', asyncHandler(blogController.getBlog))
+router.delete('/blog/:id', asyncHandler(blogController.deleteBlog))
 router.put(
   '/blog/cover-image',
   upload.single('image'),

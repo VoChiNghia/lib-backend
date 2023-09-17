@@ -3,7 +3,7 @@ import { hashPassword } from '@/middlewares/auth'
 import { findAllUser, findUser } from '@/models/repository/user.repo'
 import userModel from '@/models/user.model'
 import { KeyValuePair } from '@/type/utils.type'
-import { getUserInfo } from '@/utils'
+import { getUserInfo, validateObjectId } from '@/utils'
 import { Types } from 'mongoose'
 import bcrypt from 'bcrypt'
 
@@ -27,17 +27,27 @@ class UserService {
     }
   }
   static async updateUser(id: any, body: KeyValuePair<string | number>) {
-    const getUser = await findUser({ _id: id })
-    if (!getUser) throw new BadRequest('User not found')
-
-    const query = { _id: id }
-    const update = body
-    const option = {
-      new: true
+    if (!validateObjectId(id)) {
+      const hashPass: any = await hashPassword('12345678')
+      await userModel.create({
+        ...body,
+        password: hashPass
+      })
+      return 'user created'
+    }else{
+      const getUser = await findUser({ _id: id })
+      if(!getUser) throw new Error("Không tìm thấy người dùng")
+      const query = { _id: id }
+      const update = body
+      const option = {
+        new: true
+      }
+      const updateUser = await userModel.findOneAndUpdate(query, update, option)
+  
+      return 'user updated'
     }
-    const updateUser = await userModel.findOneAndUpdate(query, update, option)
 
-    return 'user updated'
+    
   }
 
   static async updatePassword(
@@ -47,11 +57,10 @@ class UserService {
     const getUser = await userModel.findOne({ _id: id })
     if (!getUser) throw new BadRequest('User not found')
 
-    if (!(await bcrypt.compare(password, currentPassword))) throw new BadRequest('Current password not matched')
-    if (currentPassword !== confirmPassword) throw new BadRequest('Confirm password not matched')
+    if (!(await bcrypt.compare(currentPassword, getUser.password))) throw new BadRequest('Mật khẩu hiện tại không đúng')
+    if (String(password) !== String(confirmPassword)) throw new BadRequest('Nhập lại mật khẩu chưa đúng')
 
     const hashPass = await hashPassword(password)
-    console.log(getUser)
     const query = { _id: id }
     const update = {
       $set: { password: hashPass }

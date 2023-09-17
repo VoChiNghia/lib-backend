@@ -8,7 +8,7 @@ class BlogController {
     new SusscessResponse({
       message: 'create blog',
       httpCode: 201,
-      metadata: await BlogService.createNewBlogContent(req.body)
+      metadata: await BlogService.createNewBlogContent(req.body,req.user.id)
     }).send(res)
   }
 
@@ -33,6 +33,14 @@ class BlogController {
       message: 'suscess',
       httpCode: 200,
       metadata: await BlogService.getBlog(req.params.id)
+    }).send(res)
+  }
+
+  async deleteBlog(req: Request, res: Response, next: NextFunction) {
+    new SusscessResponse({
+      message: 'suscess',
+      httpCode: 200,
+      metadata: await BlogService.deleteBlog(req.params.id)
     }).send(res)
   }
 

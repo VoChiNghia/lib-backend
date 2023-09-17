@@ -19,7 +19,7 @@ declare module 'express-serve-static-core' {
   }
 }
 
-const hashPassword = async (password: string): Promise<string> => {
+const hashPassword = async (password: any): Promise<string> => {
   const salt: string = await bcrypt.genSalt(10)
   const hashedPassword: string = await bcrypt.hash(password, salt)
   return hashedPassword

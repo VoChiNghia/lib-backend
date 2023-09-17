@@ -5,11 +5,12 @@ import blogModel from '@/models/blog.model'
 import fs from 'fs'
 
 class BlogService {
-  static async createNewBlogContent(body: any) {
+  static async createNewBlogContent(body: any,id: any) {
     try {
       const newBlog = await blogModel.create({
         title: body.title,
-        content: body.content
+        content: body.content,
+        userId: id
       })
       return newBlog
     } catch (error: any) {
@@ -19,7 +20,7 @@ class BlogService {
 
   static async getAllBlog() {
     try {
-      const getAll = await blogModel.find()
+      const getAll = await blogModel.find().populate('userId')
       if(!getAll) throw new Error('Not found')
       return getAll
     } catch (error: any) {
@@ -30,6 +31,16 @@ class BlogService {
   static async getBlog(id: any) {
     try {
       const getAll = await blogModel.findById(id)
+      if(!getAll) throw new Error('Not found')
+      return getAll
+    } catch (error: any) {
+      throw new Error(error)
+    }
+  }
+
+  static async deleteBlog(id: any) {
+    try {
+      const getAll = await blogModel.findByIdAndDelete(id)
       if(!getAll) throw new Error('Not found')
       return getAll
     } catch (error: any) {

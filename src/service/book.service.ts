@@ -87,6 +87,10 @@ class BookService {
       delete queryObj['category']
       queryObj['category.name'] = query.category
     }
+    if (query.name) {
+      delete queryObj['name']
+      queryObj['name'] = query.name
+    }
 
     let queryBook = bookModel.find(queryObj)
     // sort
