@@ -13,8 +13,29 @@ import contentFile from '@/nodemailer/contentResponse'
 import jwt from 'jsonwebtoken'
 
 class AuthService {
-  static async signUp(token: string) {
-    const decode: any = await jwt.verify(token, 'nghia')
+  // static async signUp(token: string) {
+  //   const decode: any = await jwt.verify(token, 'nghia')
+  //   const newUser = await createModel(userModel,{
+  //     name: decode.name,
+  //     email: decode.email,
+  //     password: decode.password,
+  //     phoneNumber: decode.phoneNumber,
+  //   })
+
+  //   if (!newUser) throw new BadRequest('register fail')
+  //   return ` <!DOCTYPE html>
+  //   <html>
+  //     <head>
+  //       <title>Trang chủ</title>
+  //     </head>
+  //     <body>
+  //       <h1>Đăng ký tài khoản thành công!</h1>
+  //     </body>
+  //   </html>`
+  // }
+
+  static async signUp(req: any, res: any) {
+    const decode: any = await jwt.verify(req.params.token, 'nghia')
     const newUser = await createModel(userModel,{
       name: decode.name,
       email: decode.email,
@@ -23,7 +44,7 @@ class AuthService {
     })
 
     if (!newUser) throw new BadRequest('register fail')
-    return ` <!DOCTYPE html>
+    res.send(` <!DOCTYPE html>
     <html>
       <head>
         <title>Trang chủ</title>
@@ -31,7 +52,7 @@ class AuthService {
       <body>
         <h1>Đăng ký tài khoản thành công!</h1>
       </body>
-    </html>`
+    </html>`)
   }
 
   static async sendEmailVerify({ name, email, password, phoneNumber }: SignUpType) {

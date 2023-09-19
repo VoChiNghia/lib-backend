@@ -11,13 +11,13 @@ class AuthController {
     }).send(res)
   }
 
- async signUp(req: Request, res: Response, next: NextFunction) {
-    new SusscessResponse({
-      message: 'Created',
-      httpCode: 201,
-      metadata: await AuthService.signUp(req.params.token)
-    }).send(res)
-  }
+//  async signUp(req: Request, res: Response, next: NextFunction) {
+//     new SusscessResponse({
+//       message: 'Created',
+//       httpCode: 201,
+//       metadata: await AuthService.signUp(req.params.token)
+//     }).send(res)
+//   }
 
   async signIn(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
