@@ -11,7 +11,7 @@ class AuthController {
     }).send(res)
   }
 
-  async signUp(req: Request, res: Response, next: NextFunction) {
+ async signUp(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
       message: 'Created',
       httpCode: 201,

@@ -23,7 +23,15 @@ class AuthService {
     })
 
     if (!newUser) throw new BadRequest('register fail')
-    return 'register successfully'
+    return ` <!DOCTYPE html>
+    <html>
+      <head>
+        <title>Trang chủ</title>
+      </head>
+      <body>
+        <h1>Đăng ký tài khoản thành công!</h1>
+      </body>
+    </html>`
   }
 
   static async sendEmailVerify({ name, email, password, phoneNumber }: SignUpType) {
