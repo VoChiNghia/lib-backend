@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const logs_1 = __importDefault(require("@/logs"));
-const cloudinary_1 = __importDefault(require("@/middlewares/cloudinary"));
-const file_model_1 = __importDefault(require("@/models/file.model"));
+const logs_1 = __importDefault(require("../logs"));
+const cloudinary_1 = __importDefault(require("../middlewares/cloudinary"));
+const file_model_1 = __importDefault(require("../models/file.model"));
 const fs_1 = __importDefault(require("fs"));
 class FileService {
     static async createFile(body) {

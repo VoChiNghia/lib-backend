@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("@/helpper");
-const auth_service_1 = __importDefault(require("@/service/auth.service"));
+const helpper_1 = require("../helpper");
+const auth_service_1 = __importDefault(require("../service/auth.service"));
 class AuthController {
     async sendEmailVerify(req, res, next) {
         new helpper_1.SusscessResponse({
@@ -13,13 +13,13 @@ class AuthController {
             metadata: await auth_service_1.default.sendEmailVerify(req.body)
         }).send(res);
     }
-    async signUp(req, res, next) {
-        new helpper_1.SusscessResponse({
-            message: 'Created',
-            httpCode: 201,
-            metadata: await auth_service_1.default.signUp(req.params.token)
-        }).send(res);
-    }
+    //  async signUp(req: Request, res: Response, next: NextFunction) {
+    //     new SusscessResponse({
+    //       message: 'Created',
+    //       httpCode: 201,
+    //       metadata: await AuthService.signUp(req.params.token)
+    //     }).send(res)
+    //   }
     async signIn(req, res, next) {
         new helpper_1.SusscessResponse({
             message: 'SignIn successfully',

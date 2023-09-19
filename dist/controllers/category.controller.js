@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("@/helpper");
-const category_service_1 = __importDefault(require("@/service/category.service"));
+const helpper_1 = require("../helpper");
+const category_service_1 = __importDefault(require("../service/category.service"));
 class CategoryController {
     async createNewBook(req, res, next) {
         new helpper_1.SusscessResponse({

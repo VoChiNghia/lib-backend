@@ -3,14 +3,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("@/helpper");
-const blog_service_1 = __importDefault(require("@/service/blog.service"));
+const helpper_1 = require("../helpper");
+const blog_service_1 = __importDefault(require("../service/blog.service"));
 class BlogController {
     async createNewBlog(req, res, next) {
         new helpper_1.SusscessResponse({
             message: 'create blog',
             httpCode: 201,
-            metadata: await blog_service_1.default.createNewBlogContent(req.body)
+            metadata: await blog_service_1.default.createNewBlogContent(req.body, req.user.id)
         }).send(res);
     }
     async uploadThumnail(req, res, next) {
@@ -32,6 +32,13 @@ class BlogController {
             message: 'suscess',
             httpCode: 200,
             metadata: await blog_service_1.default.getBlog(req.params.id)
+        }).send(res);
+    }
+    async deleteBlog(req, res, next) {
+        new helpper_1.SusscessResponse({
+            message: 'suscess',
+            httpCode: 200,
+            metadata: await blog_service_1.default.deleteBlog(req.params.id)
         }).send(res);
     }
 }

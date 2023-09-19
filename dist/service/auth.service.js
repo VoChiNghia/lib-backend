@@ -4,20 +4,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_model_1 = __importDefault(require("@/models/user.model"));
-const auth_1 = require("@/middlewares/auth");
-const utils_1 = require("@/utils");
-const helpper_1 = require("@/helpper");
-const repository_1 = require("@/models/repository");
-const auth_2 = require("@/middlewares/auth");
-const token_model_1 = __importDefault(require("@/models/token.model"));
-const logs_1 = __importDefault(require("@/logs"));
-const nodemailer_1 = __importDefault(require("@/nodemailer"));
-const contentResponse_1 = __importDefault(require("@/nodemailer/contentResponse"));
+const user_model_1 = __importDefault(require("../models/user.model"));
+const auth_1 = require("../middlewares/auth");
+const utils_1 = require("../utils");
+const helpper_1 = require("../helpper");
+const repository_1 = require("../models/repository");
+const auth_2 = require("../middlewares/auth");
+const token_model_1 = __importDefault(require("../models/token.model"));
+const logs_1 = __importDefault(require("../logs"));
+const nodemailer_1 = __importDefault(require("../nodemailer"));
+const contentResponse_1 = __importDefault(require("../nodemailer/contentResponse"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class AuthService {
-    static async signUp(token) {
-        const decode = await jsonwebtoken_1.default.verify(token, 'nghia');
+    // static async signUp(token: string) {
+    //   const decode: any = await jwt.verify(token, 'nghia')
+    //   const newUser = await createModel(userModel,{
+    //     name: decode.name,
+    //     email: decode.email,
+    //     password: decode.password,
+    //     phoneNumber: decode.phoneNumber,
+    //   })
+    //   if (!newUser) throw new BadRequest('register fail')
+    //   return ` <!DOCTYPE html>
+    //   <html>
+    //     <head>
+    //       <title>Trang chủ</title>
+    //     </head>
+    //     <body>
+    //       <h1>Đăng ký tài khoản thành công!</h1>
+    //     </body>
+    //   </html>`
+    // }
+    static async signUp(req, res) {
+        const decode = await jsonwebtoken_1.default.verify(req.params.token, 'nghia');
         const newUser = await (0, utils_1.createModel)(user_model_1.default, {
             name: decode.name,
             email: decode.email,
@@ -26,7 +45,64 @@ class AuthService {
         });
         if (!newUser)
             throw new helpper_1.BadRequest('register fail');
-        return 'register successfully';
+        res.send(` <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Đăng ký tài khoản thành công</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            
+            .container {
+                background-color: #fff;
+                border-radius: 8px;
+                padding: 20px;
+                text-align: center;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid orangered;
+            }
+            
+            .success-icon {
+                color: #28a745;
+                font-size: 48px;
+            }
+            
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            
+            p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            
+            a {
+                text-decoration: none;
+                color: #007bff;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h1>Đăng ký tài khoản thành công!</h1>
+            <p>Tài khoản của bạn đã được tạo thành công.</p>
+            <a href="https://donganlibrary.online">Đăng nhập</a>
+        </div>
+    </body>
+    </html>`);
     }
     static async sendEmailVerify({ name, email, password, phoneNumber }) {
         const findUserByEmail = await user_model_1.default.findOne({ email });

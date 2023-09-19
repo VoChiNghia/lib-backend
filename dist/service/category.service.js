@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("@/helpper");
-const category_model_1 = __importDefault(require("@/models/category.model"));
-const utils_1 = require("@/utils");
+const helpper_1 = require("../helpper");
+const category_model_1 = __importDefault(require("../models/category.model"));
+const utils_1 = require("../utils");
 class CategoryService {
     static async createCategory(body) {
         try {

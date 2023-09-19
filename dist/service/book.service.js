@@ -3,16 +3,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("@/helpper");
-const logs_1 = __importDefault(require("@/logs"));
-const cloudinary_1 = __importDefault(require("@/middlewares/cloudinary"));
-const book_model_1 = __importDefault(require("@/models/book.model"));
-const category_model_1 = __importDefault(require("@/models/category.model"));
-const utils_1 = require("@/utils");
+const helpper_1 = require("../helpper");
+const logs_1 = __importDefault(require("../logs"));
+const cloudinary_1 = __importDefault(require("../middlewares/cloudinary"));
+const book_model_1 = __importDefault(require("../models/book.model"));
+const category_model_1 = __importDefault(require("../models/category.model"));
+const utils_1 = require("../utils");
 const fs_1 = __importDefault(require("fs"));
 class BookService {
     static async createNewBook(body) {
-        console.log(body);
         try {
             const foundBook = await book_model_1.default.findOne({ name: body.name });
             if (foundBook)
@@ -84,6 +83,10 @@ class BookService {
         if (query.category) {
             delete queryObj['category'];
             queryObj['category.name'] = query.category;
+        }
+        if (query.name) {
+            delete queryObj['name'];
+            queryObj['name'] = query.name;
         }
         let queryBook = book_model_1.default.find(queryObj);
         // sort

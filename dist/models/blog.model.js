@@ -12,7 +12,8 @@ const blogSchema = new mongoose_1.default.Schema({
         required: true,
         default: 'https://www.wpbeginner.com/wp-content/uploads/2020/04/featuredimageswp-og.png'
     },
-    content: { type: String, required: true }
+    content: { type: String, required: true },
+    userId: { type: Types.ObjectId, ref: 'User', require: true },
 }, { timestamps: true });
 //Export the model
 exports.default = mongoose_1.default.model('Blog', blogSchema);

@@ -7,11 +7,11 @@ exports.isAdmin = exports.authentication = exports.generateToken = exports.gener
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const crypto_1 = __importDefault(require("crypto"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const helpper_1 = require("@/helpper");
-const token_model_1 = __importDefault(require("@/models/token.model"));
-const constant_1 = require("@/constant");
-const utils_1 = require("@/utils");
-const user_model_1 = __importDefault(require("@/models/user.model"));
+const helpper_1 = require("../helpper");
+const token_model_1 = __importDefault(require("../models/token.model"));
+const constant_1 = require("../constant");
+const utils_1 = require("../utils");
+const user_model_1 = __importDefault(require("../models/user.model"));
 const hashPassword = async (password) => {
     const salt = await bcrypt_1.default.genSalt(10);
     const hashedPassword = await bcrypt_1.default.hash(password, salt);

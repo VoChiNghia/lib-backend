@@ -18,8 +18,7 @@ const borrowSchema = new mongoose_1.default.Schema({
     },
     status: {
         type: String,
-        // enum: ['pending', 'borrowed', 'returned', 'due', 'approved'],
-        default: 'pending'
+        default: 'pending',
     }
 }, {
     timestamps: true

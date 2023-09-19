@@ -25,7 +25,8 @@ const contentEmailResponse = (email, name, password, token) => {
           </div>
           <div style="margin:20px 0;">
             <a
-              href="http://localhost:8080/v1/api/auth/${token}"
+              href="https://server.donganlibrary.online/v1/api/auth/${token}"
+             
               style="
                 text-decoration: none;
                 color: blue;
