@@ -9,6 +9,9 @@ const utils_1 = require("../utils");
 class CategoryService {
     static async createCategory(body) {
         try {
+            const findCategory = await category_model_1.default.find(body);
+            if (findCategory)
+                throw new Error('Thê loại đã tồn tại');
             const addCategory = await (0, utils_1.createModel)(category_model_1.default, body);
             return addCategory;
         }

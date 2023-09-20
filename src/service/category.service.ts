@@ -6,6 +6,11 @@ import { createModel, validateObjectId } from '@/utils'
 class CategoryService {
   static async createCategory(body: CategoryModelType) {
     try {
+
+      const findCategory = await categoryModel.find(body)
+
+      if(findCategory) throw new Error('Thê loại đã tồn tại')
+
       const addCategory = await createModel(categoryModel, body)
       return addCategory
     } catch (error: any) {
