@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\dist\\logsFile\\.3f1f4deb4e7743b392cded375fce1201d734d122-audit.json",
+    "files": [
+        {
+            "date": 1695307416622,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\dist\\logsFile\\2023-09-21.log",
+            "hash": "376fb6b055311264edab203eff30aa6072e66512059ef46b4f0aa6186aa984f0"
+        }
+    ],
+    "hashType": "sha256"
+}

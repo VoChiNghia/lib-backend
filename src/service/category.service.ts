@@ -9,7 +9,7 @@ class CategoryService {
 
       const findCategory = await categoryModel.find(body)
 
-      if(findCategory) throw new Error('Thê loại đã tồn tại')
+      if(findCategory.length !== 0) throw new Error('Thê loại đã tồn tại')
 
       const addCategory = await createModel(categoryModel, body)
       return addCategory
