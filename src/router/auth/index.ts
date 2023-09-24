@@ -10,6 +10,7 @@ import AuthService from '@/service/auth.service'
 
 const router = express.Router()
 
+router.post('/auth/forgot-password', asyncHandler(AuthController.forgotPassword))
 router.post('/auth/signup', asyncHandler(AuthController.sendEmailVerify))
 router.post('/auth/signin', asyncHandler(AuthController.signIn))
 router.delete('/auth/logout/:id', asyncHandler(AuthController.logout))

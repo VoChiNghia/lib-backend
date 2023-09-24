@@ -30,7 +30,8 @@ class App {
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
         this.app.use('/public', express_1.default.static('public'));
-        this.app.use(express_1.default.json({ limit: '50mbb' }));
+        this.app.use(express_1.default.json({ limit: '50mb' }));
+        this.app.use(express_1.default.urlencoded({ limit: '50mb' }));
     }
     router() {
         this.app.use('/', router_1.default);

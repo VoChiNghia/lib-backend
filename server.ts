@@ -1,6 +1,8 @@
 import app from './src/index'
 import * as cron from 'node-cron';
 import borrowModel from './src/models/borrowBook.model'
+
+
 const port: string = process.env.PORT || '3000'
 
 
@@ -16,6 +18,7 @@ cron.schedule('0 0 * * *', async () => { // Chạy vào mỗi ngày lúc 00:00:0
     await book.save();
   }
 });
+
 
 app.listen(port, (err?: Error | null) => {
   if (err) {

@@ -4,16 +4,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_model_1 = __importDefault(require("../models/user.model"));
-const auth_1 = require("../middlewares/auth");
-const utils_1 = require("../utils");
-const helpper_1 = require("../helpper");
-const repository_1 = require("../models/repository");
-const auth_2 = require("../middlewares/auth");
-const token_model_1 = __importDefault(require("../models/token.model"));
-const logs_1 = __importDefault(require("../logs"));
-const nodemailer_1 = __importDefault(require("../nodemailer"));
-const contentResponse_1 = __importDefault(require("../nodemailer/contentResponse"));
+const user_model_1 = __importDefault(require("@/models/user.model"));
+const auth_1 = require("@/middlewares/auth");
+const utils_1 = require("@/utils");
+const helpper_1 = require("@/helpper");
+const repository_1 = require("@/models/repository");
+const auth_2 = require("@/middlewares/auth");
+const token_model_1 = __importDefault(require("@/models/token.model"));
+const logs_1 = __importDefault(require("@/logs"));
+const nodemailer_1 = __importDefault(require("@/nodemailer"));
+const contentResponse_1 = __importDefault(require("@/nodemailer/contentResponse"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 class AuthService {
     // static async signUp(token: string) {
@@ -41,7 +41,7 @@ class AuthService {
             name: decode.name,
             email: decode.email,
             password: decode.password,
-            phoneNumber: decode.phoneNumber,
+            phoneNumber: decode.phoneNumber
         });
         if (!newUser)
             throw new helpper_1.BadRequest('register fail');
@@ -130,6 +130,30 @@ class AuthService {
         });
         return info;
     }
+    static async forgotPassword(email) {
+        console.log(email);
+        const randomPassword = this.generateRandomPassword(8);
+        // TODO: Lưu mật khẩu mới vào cơ sở dữ liệu cho tài khoản tương ứng với email
+        const findUser = await user_model_1.default.findOne({ email });
+        if (!findUser)
+            throw new Error('Không tìm thấy user');
+        const hashPass = await (0, auth_1.hashPassword)(randomPassword);
+        await user_model_1.default.findOneAndUpdate({ email }, { password: hashPass });
+        // Gửi email với mật khẩu mới
+        nodemailer_1.default.sendMail({
+            from: 'Library-management-system',
+            to: email,
+            subject: 'Password Reset',
+            text: `Your new password is: ${randomPassword}`
+        }, (err, info) => {
+            if (err) {
+                console.error('Error sending email:', err);
+                return 'An error occurred while sending the email';
+            }
+            return 'Password reset email sent';
+        });
+        return 'success';
+    }
     static async signIn({ email, password }) {
         const findUser = await (0, repository_1.findUserByEmail)(email);
         if (!findUser)
@@ -191,6 +215,15 @@ class AuthService {
     }
 }
 _a = AuthService;
+AuthService.generateRandomPassword = (length) => {
+    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset.charAt(randomIndex);
+    }
+    return password;
+};
 AuthService.logout = async (id) => {
     const del = await token_model_1.default.findOneAndDelete({ userId: id });
     return {

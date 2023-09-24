@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const utils_1 = require("../../utils");
-const auth_1 = require("../../middlewares/auth");
-const penalty_controller_1 = __importDefault(require("../../controllers/penalty.controller"));
+const utils_1 = require("@/utils");
+const auth_1 = require("@/middlewares/auth");
+const penalty_controller_1 = __importDefault(require("@/controllers/penalty.controller"));
 const router = express_1.default.Router();
 router.use(auth_1.authentication);
 router.post('/penalty', (0, utils_1.asyncHandler)(penalty_controller_1.default.createNewPenalty));

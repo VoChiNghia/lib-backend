@@ -36,11 +36,11 @@ class AuthService {
 
   static async signUp(req: any, res: any) {
     const decode: any = await jwt.verify(req.params.token, 'nghia')
-    const newUser = await createModel(userModel,{
+    const newUser = await createModel(userModel, {
       name: decode.name,
       email: decode.email,
       password: decode.password,
-      phoneNumber: decode.phoneNumber,
+      phoneNumber: decode.phoneNumber
     })
 
     if (!newUser) throw new BadRequest('register fail')
@@ -104,7 +104,12 @@ class AuthService {
     </html>`)
   }
 
-  static async sendEmailVerify({ name, email, password, phoneNumber }: SignUpType) {
+  static async sendEmailVerify({
+    name,
+    email,
+    password,
+    phoneNumber
+  }: SignUpType) {
     const findUserByEmail = await userModel.findOne({ email })
     if (findUserByEmail) throw new BadRequest('User registered')
     const hashPass = await hashPassword(password)
@@ -136,13 +141,58 @@ class AuthService {
     return info
   }
 
+  static generateRandomPassword = (length: any) => {
+    const charset =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    let password = ''
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length)
+      password += charset.charAt(randomIndex)
+    }
+    return password
+  }
+  static async forgotPassword(email: string) {
+    console.log(email)
+    const randomPassword = this.generateRandomPassword(8)
+
+    // TODO: Lưu mật khẩu mới vào cơ sở dữ liệu cho tài khoản tương ứng với email
+    const findUser = await userModel.findOne({ email })
+    if (!findUser) throw new Error('Không tìm thấy user')
+    const hashPass = await hashPassword(randomPassword)
+
+    await userModel.findOneAndUpdate({ email }, { password: hashPass })
+
+    // Gửi email với mật khẩu mới
+    transporter.sendMail(
+      {
+        from: 'Library-management-system',
+        to: email,
+        subject: 'Password Reset',
+        text: `Your new password is: ${randomPassword}`
+      },
+      (err, info) => {
+        if (err) {
+          console.error('Error sending email:', err)
+          return 'An error occurred while sending the email'
+        }
+
+        return 'Password reset email sent'
+      }
+    )
+
+    return 'success'
+  }
+
   static async signIn({ email, password }: SignIn) {
     const findUser = await findUserByEmail(email)
     if (!findUser) throw new BadRequest('User not found')
 
     if (findUser && (await findUser.isPasswordMatched(password))) {
       const { publicKey, privateKey } = generateKeyPair()
-      const { accessToken, refreshToken } = await generateToken({ id: findUser._id, email: findUser.email }, privateKey)
+      const { accessToken, refreshToken } = await generateToken(
+        { id: findUser._id, email: findUser.email },
+        privateKey
+      )
 
       const newTokenModel = await tokenModel.findOneAndUpdate(
         { userId: findUser._id },
@@ -172,7 +222,11 @@ class AuthService {
     }
   }
 
-  static async handleRefreshToken(user: any, refreshToken: string, keyStore: TokenModelType) {
+  static async handleRefreshToken(
+    user: any,
+    refreshToken: string,
+    keyStore: TokenModelType
+  ) {
     const { id, email } = user
 
     const findRefreshTokenUsed = await tokenModel.findOne({
@@ -184,7 +238,8 @@ class AuthService {
       throw new Forbidden('user forbidden')
     }
 
-    if (keyStore.refreshToken !== refreshToken) throw new BadRequest('Refresh token invalid')
+    if (keyStore.refreshToken !== refreshToken)
+      throw new BadRequest('Refresh token invalid')
 
     const tokens = await generateToken({ id, email }, keyStore.privateKey)
 

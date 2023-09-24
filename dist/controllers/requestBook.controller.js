@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getAllRequestBook = exports.getRequestBook = exports.deleteRequestBook = exports.createRequestBook = void 0;
-const requestBook_model_1 = __importDefault(require("../models/requestBook.model"));
+const requestBook_model_1 = __importDefault(require("@/models/requestBook.model"));
 const createRequestBook = async (req, res) => {
     const { id } = req.user;
     try {

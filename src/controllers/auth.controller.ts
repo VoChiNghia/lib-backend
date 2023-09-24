@@ -26,6 +26,13 @@ class AuthController {
     }).send(res)
   }
 
+  async forgotPassword(req: Request, res: Response, next: NextFunction) {
+    new SusscessResponse({
+      message: 'SignIn successfully',
+      metadata: await AuthService.forgotPassword(req.body.email)
+    }).send(res)
+  }
+
   async logout(req: Request, res: Response, next: NextFunction) {
     new SusscessResponse({
       message: 'Logout successfully',

@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Forbidden = exports.BadRequest = exports.NotFoundError = exports.SusscessResponse = exports.AppError = void 0;
-const httpCode_1 = require("../utils/httpCode");
-const reasonError_1 = require("../utils/reasonError");
+const httpCode_1 = require("@/utils/httpCode");
+const reasonError_1 = require("@/utils/reasonError");
 class AppError extends Error {
     constructor(message, httpCode, errorType) {
         super(message);

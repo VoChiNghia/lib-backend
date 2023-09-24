@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const utils_1 = require("../../utils");
-const auth_1 = require("../../middlewares/auth");
-const uploadFile_1 = require("../../middlewares/uploadFile");
-const file_controller_1 = __importDefault(require("../../controllers/file.controller"));
+const utils_1 = require("@/utils");
+const auth_1 = require("@/middlewares/auth");
+const uploadFile_1 = require("@/middlewares/uploadFile");
+const file_controller_1 = __importDefault(require("@/controllers/file.controller"));
 const router = express_1.default.Router();
 router.use(auth_1.authentication);
 router.put('/file/file-pdf', uploadFile_1.upload.single('pdf'), (0, utils_1.asyncHandler)(file_controller_1.default.updateFile));

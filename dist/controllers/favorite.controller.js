@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteItemFromListBooks = exports.deleteListItemListBook = exports.deleteListFavoriteByUser = exports.getAllListFavorite = exports.getListFavorite = exports.getListFavoriteByUser = exports.addBookToFavoriteReturn = exports.addBookToFavorite = exports.addFavoriteBook = void 0;
-const helpper_1 = require("../helpper");
-const favorite_model_1 = __importDefault(require("../models/favorite.model"));
+const helpper_1 = require("@/helpper");
+const favorite_model_1 = __importDefault(require("@/models/favorite.model"));
 const addFavoriteBook = async (req, res) => {
     const { prodId, user } = req.body;
     try {

@@ -7,7 +7,7 @@ exports.coverImgProduct = exports.upload = void 0;
 const multer_1 = __importDefault(require("multer"));
 const path_1 = __importDefault(require("path"));
 const sharp_1 = __importDefault(require("sharp"));
-const utils_1 = require("../utils");
+const utils_1 = require("@/utils");
 const multerStorage = multer_1.default.diskStorage({
     destination: function (req, file, cb) {
         if (file.mimetype === 'application/pdf') {

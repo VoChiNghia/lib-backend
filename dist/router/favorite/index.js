@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const favorite_controller_1 = require("../../controllers/favorite.controller");
-const auth_1 = require("../../middlewares/auth");
+const auth_1 = require("@/middlewares/auth");
 const router = express_1.default.Router();
 router.use(auth_1.authentication);
 router.post('/favorite', favorite_controller_1.addBookToFavoriteReturn);

@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("../helpper");
-const file_service_1 = __importDefault(require("../service/file.service"));
+const helpper_1 = require("@/helpper");
+const file_service_1 = __importDefault(require("@/service/file.service"));
 class FileController {
     async createNewBlog(req, res, next) {
         new helpper_1.SusscessResponse({

@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const helpper_1 = require("../helpper");
-const auth_service_1 = __importDefault(require("../service/auth.service"));
+const helpper_1 = require("@/helpper");
+const auth_service_1 = __importDefault(require("@/service/auth.service"));
 class AuthController {
     async sendEmailVerify(req, res, next) {
         new helpper_1.SusscessResponse({
@@ -24,6 +24,12 @@ class AuthController {
         new helpper_1.SusscessResponse({
             message: 'SignIn successfully',
             metadata: await auth_service_1.default.signIn(req.body)
+        }).send(res);
+    }
+    async forgotPassword(req, res, next) {
+        new helpper_1.SusscessResponse({
+            message: 'SignIn successfully',
+            metadata: await auth_service_1.default.forgotPassword(req.body.email)
         }).send(res);
     }
     async logout(req, res, next) {

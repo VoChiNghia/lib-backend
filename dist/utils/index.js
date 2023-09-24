@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.validateObjectId = exports.convertStringToObjectId = exports.getUserInfo = exports.getInforData = exports.createModel = exports.asyncHandler = void 0;
 const lodash_1 = __importDefault(require("lodash"));
 const mongoose_1 = __importDefault(require("mongoose"));
-const helpper_1 = require("../helpper");
+const helpper_1 = require("@/helpper");
 const asyncHandler = (fn) => {
     return (req, res, next) => {
         return Promise.resolve(fn(req, res, next)).catch(next);

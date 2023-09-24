@@ -3,9 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const logs_1 = __importDefault(require("../logs"));
-const cloudinary_1 = __importDefault(require("../middlewares/cloudinary"));
-const blog_model_1 = __importDefault(require("../models/blog.model"));
+const logs_1 = __importDefault(require("@/logs"));
+const cloudinary_1 = __importDefault(require("@/middlewares/cloudinary"));
+const blog_model_1 = __importDefault(require("@/models/blog.model"));
 const fs_1 = __importDefault(require("fs"));
 class BlogService {
     static async createNewBlogContent(body, id) {
