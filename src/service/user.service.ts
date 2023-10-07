@@ -18,7 +18,7 @@ class UserService {
   }
 
   static async getAllUser() {
-    const AllUser = await findAllUser('-password -createdAt -updatedAt')
+    const AllUser = await findAllUser('-password')
     const totalUsers = await userModel.countDocuments()
     if (!AllUser) throw new BadRequest('some thing error')
     return {

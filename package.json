@@ -63,6 +63,7 @@
     "node-cron": "^3.0.2",
     "nodemailer": "^6.9.4",
     "sharp": "^0.32.4",
+    "socket.io": "^4.7.2",
     "winston": "^3.10.0",
     "winston-daily-rotate-file": "^4.7.1"
   }

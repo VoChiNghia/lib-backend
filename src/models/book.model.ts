@@ -37,7 +37,8 @@ const bookSchema = new mongoose.Schema(
     images: [],
     coverImage: {
       type: String,
-      default: 'https://dhmckee.com/wp-content/uploads/2018/11/defbookcover-min.jpg'
+      default:
+        'https://dhmckee.com/wp-content/uploads/2018/11/defbookcover-min.jpg'
     },
     language: {
       type: String,
