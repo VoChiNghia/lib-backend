@@ -20,8 +20,7 @@ const fileSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      default:'',
-      required: true
+      default:'https://4.bp.blogspot.com/-1pzAvHLMl8o/TtHk6rd-qWI/AAAAAAAAEn0/4eQH1X7_UIs/s1600/ScreenHunter_04+Nov.+27+14.11.gif',
     }
   },
   { timestamps: true }

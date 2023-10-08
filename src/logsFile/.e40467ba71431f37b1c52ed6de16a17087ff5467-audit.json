@@ -6,24 +6,14 @@
     "auditLog": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\.e40467ba71431f37b1c52ed6de16a17087ff5467-audit.json",
     "files": [
         {
-            "date": 1695227389019,
-            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-20.log",
-            "hash": "76a29bf7a018b0626fdd2ace8b4e078688e73d935887a7ce53795f154a2eddcf"
-        },
-        {
-            "date": 1695306203460,
-            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-21.log",
-            "hash": "be1b382425aad9f311b569515956f56da9f7df1d741f06968330f9bffbbdb500"
-        },
-        {
-            "date": 1695536145009,
-            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-09-24.log",
-            "hash": "ba69e51747704cd82fe979253a2d141c3c181cba430eddcb60f5b917f01605cc"
-        },
-        {
             "date": 1696383790471,
             "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-10-04.log",
             "hash": "4903e4f4a3b92991e7918b889a64e0558d570d0c6124b911d20b4db9cf66a609"
+        },
+        {
+            "date": 1696748047707,
+            "name": "D:\\Đồ án quản lý thư viện\\library-magerment-server\\src\\logsFile\\2023-10-08.log",
+            "hash": "6e9496df7fdd01201275c8e55eb7f1a50bae151791f164a177e4c1f15f6a4855"
         }
     ],
     "hashType": "sha256"

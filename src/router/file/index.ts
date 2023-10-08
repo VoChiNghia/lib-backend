@@ -7,8 +7,8 @@ import fileController from '@/controllers/file.controller'
 const router = express.Router()
 
 router.use(authentication)
-router.put('/file/file-pdf', upload.single('pdf'), asyncHandler(fileController.updateFile))
 router.post('/file', asyncHandler(fileController.createNewBlog))
+router.put('/file/file-pdf', upload.single('pdf'), asyncHandler(fileController.updateFile))
 router.get('/file', asyncHandler(fileController.getAllFiles))
 router.put('/file/cover-image/:id', upload.single('image'), asyncHandler(fileController.updateCoverImage))
 router.get('/file/:id', asyncHandler(fileController.getFileById))

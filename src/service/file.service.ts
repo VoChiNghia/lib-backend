@@ -13,11 +13,14 @@ class FileService {
     const getFile = await fileModel.find(body)
     console.log(getFile)
     if(getFile.length !== 0) {throw new Error("file đã tồn tại")}
-    console.log(body)
+ 
     try {
+      
       const newFile = await fileModel.create(body)
+      console.log(newFile)
       if (!newFile) throw new Error('Not found')
       return newFile
+    
     } catch (error: any) {
       throw new Error(error)
     }
